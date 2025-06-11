@@ -29,7 +29,7 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '../../dist')));
+app.use(express.static(path.join(__dirname, '/../dist')));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://admin:admin@cluster0.gxoi8ej.mongodb.net/')
@@ -43,12 +43,9 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/results', resultRoutes);
 
 // Base route
-app.get('/', (req, res) => {
-  res.send('API is running...');
-});
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 // Error handling
