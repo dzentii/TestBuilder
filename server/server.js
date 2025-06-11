@@ -6,15 +6,10 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 
-import path from 'path';
-import { fileURLToPath } from 'url';
-
 import { authRoutes } from './routes/auth.routes.js';
 import testRoutes from './routes/test.routes.js';
 import questionRoutes from './routes/question.routes.js';
 import resultRoutes from './routes/result.routes.js';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load environment variables
 dotenv.config();
@@ -29,8 +24,6 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '/../dist')));
-
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://admin:admin@cluster0.gxoi8ej.mongodb.net/')
 .then(() => console.log('MongoDB Connected'))
@@ -43,9 +36,8 @@ app.use('/api/questions', questionRoutes);
 app.use('/api/results', resultRoutes);
 
 // Base route
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+app.get('/', (req, res) => {
+  res.send('API is running...');
 });
 
 // Error handling
