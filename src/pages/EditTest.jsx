@@ -81,7 +81,7 @@ async function getTestData() {
     setTestTitle(editTest.title);
     setPassingScore(editTest.passingScore);
     console.log(editTest)
-    setManualCheck(editTest.manualCheck);
+    setManualCheck(!editTest.manualCheck);
     setTimeLimit(minutesToTimeString(editTest.timeLimit))
 
     //const time = formatTime(editTest.timeLimit)

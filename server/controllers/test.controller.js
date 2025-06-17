@@ -90,7 +90,7 @@ export const createTest = async (req, res) => {
       creator: req.user._id,
       timeLimit: timeLimit || 0,
       passingScore: passingScore || 60,
-      manualCheck,
+      manualCheck: !manualCheck,
       failureMessage,
       successMessage,
     });
@@ -143,7 +143,7 @@ export const updateTest = async (req, res) => {
           randomOrder:
             randomOrder !== undefined ? randomOrder : test.randomOrder,
           updatedAt: Date.now(),
-          manualCheck,
+          manualCheck: !manualCheck,
           failureMessage,
           successMessage,
         },
