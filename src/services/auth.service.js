@@ -3,7 +3,7 @@ import { API } from "./api"
 export const login = async (data) => {
   try {
 
-    const response = await API.post("/auth/login", data)
+    const response = await API.post("/api/auth/login", data)
     localStorage.setItem("token", response.data.token)
     return response.data
   } catch(error) {
