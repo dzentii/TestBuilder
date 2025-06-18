@@ -83,7 +83,7 @@ testSchema.virtual("questions", {
 
 // Генерация уникальной ссылки для теста
 testSchema.methods.generateShareableLink = function () {
-  return `${process.env.CLIENT_URL}/api/take-test/${this._id}`;
+  return `${process.env.CLIENT_URL}/take-test?test=${this._id}`;
 };
 
 const Test = mongoose.model("Test", testSchema);
